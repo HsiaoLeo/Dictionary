@@ -1,4 +1,3 @@
-const AtoZ=Array.from({length:26},(_,i)=>String.fromCharCode(i+65)) 
 class Words{
     word
     word_cn //array
@@ -7,12 +6,13 @@ class Words{
     similar_word //array
     part_of_speech
     constructor({w,wc,s,sc,sw,pos}){
-        this.word=w;
+        this.word=w.toLowerCase();
         this.word_cn=wc;
         this.sentance=s;
         this.sentance_cn=sc;
         this.similar_word=sw;
         this.part_of_speech=pos;
+        return Object.seal(this);
     }
 }
 class Linked{
@@ -42,6 +42,9 @@ class Linked{
     X
     Y
     Z
+    constructor(){
+        return Object.seal(this);
+    }
     clear(){
         Object.keys(this).forEach((key)=>{
             this[key]=undefined;
@@ -61,17 +64,35 @@ class WordNode{
         else{
             this.isText=false;
         }
+        this.next=new Linked();
+        return Object.seal(this);
     }
     insert(word){
         if(!word) throw new Error("word is null");
         this.data=word;
-        this.isText=Text;
+        this.isText=true;
     }
     remove(){
         this.data=undefined;
         this.isText=false;
     }
-    next(c){
-        return this.next[c];
+    nextNode(c){
+        return this.next[c.toUpperCase()];
+    }
+    setNextNode(c){
+        this.next[c.toUpperCase()]=new WordNode();
+    }
+}
+class Counter{
+    #val
+    constructor(){
+        this.#val=0;
+    }
+    increment(){
+        this.#val ++;
+        return this;
+    }
+    valueOf(){
+        return this.#val;
     }
 }
