@@ -4,6 +4,7 @@ class Words{
     sentance
     sentance_cn
     similar_word //array
+    reverse_word //array
     part_of_speech
     constructor({w,wc,s,sc,sw,pos}){
         this.word=w.toLowerCase();
@@ -11,6 +12,7 @@ class Words{
         this.sentance=s;
         this.sentance_cn=sc;
         this.similar_word=sw;
+        this.reverse_word=sw;
         this.part_of_speech=pos;
         return Object.seal(this);
     }

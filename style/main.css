@@ -1,0 +1,58 @@
+:root{
+    --theme-color:darkblue;
+}
+
+div.wordCard{
+    font-size: 50px;
+    border: 5px solid var(--theme-color);
+    border-radius: 20px;
+    background-color:antiquewhite;
+    padding: 5px;
+    box-shadow: 5px 5px 4px 4px rgba(50,50,50,0.5);
+    
+    width:40%;
+}
+div.wordCard :not(.wordBody){
+    font-size: 0.7em;
+}
+div.wordCard .wordSentance{
+    font-size: 0.8em;
+}
+div.wordCard .wordSentance span.main{
+    font-weight: bold;
+    color:var(--theme-color);
+}
+div.wordCard div.wordBody{
+    font-weight: bold;
+    color: var(--theme-color);
+}
+div.wordCard div.square{
+    display: flex;
+    align-items: baseline;
+}
+div.wordCard div.square:before{
+    content:"形";
+    font-size: 0.8em;
+    margin: 0 5px 0 0;
+    background-color: var(--theme-color);
+    color: white;
+    border: 1px solid var(--theme-color);
+    border-radius: 8px;
+}
+div.wordCard div.square.anti:before{
+    background:none;
+    color: var(--theme-color);
+    border-color: var(--theme-color);
+}
+div.wordCard div.adj:before{
+    content:"形";
+}
+div.wordCard div.similar:before{
+    content:"同";
+}
+div.wordCard div.reverse:before{
+    content:"反";
+}
+
+
+

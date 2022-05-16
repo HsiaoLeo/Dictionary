@@ -55,3 +55,6 @@ function speak(wordStr){
 function csvtoWorksArray(){
 
 }
+function cardGenerator(word){
+    
+}
