@@ -6,7 +6,15 @@ class Words{
     similar_word //array
     reverse_word //array
     part_of_speech
-    constructor({w,wc,s,sc,sw,pos}){
+	isSub
+	static #wordCount = 0
+	static get wordCount(){
+		return Words.#wordCount.valueOf();
+	}
+	static countDecrease(){
+		Words.#wordCount.decrease();
+	}
+    constructor({w,wc,s,sc,sw,pos},issub=false){
         this.word=w.toLowerCase();
         this.word_cn=wc;
         this.sentance=s;
@@ -14,6 +22,11 @@ class Words{
         this.similar_word=sw;
         this.reverse_word=sw;
         this.part_of_speech=pos;
+		this.isSub = issub;
+		if(!Words.#wordCount){
+			Words.#wordCount = new Counter()
+		}
+		if(!this.isSub)Words.#wordCount.increment();
         return Object.seal(this);
     }
 }
@@ -55,6 +68,7 @@ class Linked{
 }
 class WordNode{
     data
+	subData = []
     isText=false
     isLeaf=false
     next
@@ -71,12 +85,15 @@ class WordNode{
     }
     insert(word){
         if(!word) throw new Error("word is null");
-        this.data=word;
+        if(!word.isSub)this.data=word;
+		else this.subData.push(word)
         this.isText=true;
     }
     remove(){
         this.data=undefined;
+		this.subData=[];
         this.isText=false;
+		Words.countDecrease();
     }
     nextNode(c){
         return this.next[c.toUpperCase()];
@@ -94,6 +111,10 @@ class Counter{
         this.#val ++;
         return this;
     }
+	decrease(){
+		this.#val --;
+        return this;
+	}
     valueOf(){
         return this.#val;
     }
