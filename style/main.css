@@ -9,20 +9,28 @@ div.wordCard{
     background-color:antiquewhite;
     padding: 5px;
     box-shadow: 5px 5px 4px 4px rgba(50,50,50,0.5);
-    
     width:40%;
 }
-div.wordCard :not(.wordBody){
-    font-size: 0.7em;
+div.wordCard .wordDelimeter{
+    height:20px;
+    width:80%;
+    border-top: 15px dashed var(--theme-color);
+    margin: 20px 10% 5px 10%;
+}
+div.wordCard .wordMainCN,
+div.wordCard .wordSimilar,
+div.wordCard .wordReverse,
+div.wordCard .wordSentanceCN{
+    font-size: 0.6em;
 }
 div.wordCard .wordSentance{
-    font-size: 0.8em;
+    font-size: 0.7em;
 }
 div.wordCard .wordSentance span.main{
     font-weight: bold;
     color:var(--theme-color);
 }
-div.wordCard div.wordBody{
+div.wordCard div.wordMain{
     font-weight: bold;
     color: var(--theme-color);
 }

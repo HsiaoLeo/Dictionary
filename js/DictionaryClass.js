@@ -6,7 +6,7 @@ class Words{
     similar_word //array
     reverse_word //array
     part_of_speech
-	isSub
+	#isSub
 	static #wordCount = 0
 	static get wordCount(){
 		return Words.#wordCount.valueOf();
@@ -14,6 +14,9 @@ class Words{
 	static countDecrease(){
 		Words.#wordCount.decrease();
 	}
+    get isSubWord(){
+        return this.#isSub;
+    }
     constructor({w,wc,s,sc,sw,pos},issub=false){
         this.word=w.toLowerCase();
         this.word_cn=wc;
@@ -22,7 +25,7 @@ class Words{
         this.similar_word=sw;
         this.reverse_word=sw;
         this.part_of_speech=pos;
-		this.isSub = issub;
+		this.#isSub = issub;
 		if(!Words.#wordCount){
 			Words.#wordCount = new Counter()
 		}
@@ -85,7 +88,7 @@ class WordNode{
     }
     insert(word){
         if(!word) throw new Error("word is null");
-        if(!word.isSub)this.data=word;
+        if(!word.isSubWord)this.data=word;
 		else this.subData.push(word)
         this.isText=true;
     }
