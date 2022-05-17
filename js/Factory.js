@@ -1,5 +1,5 @@
 const compose = (...fns) => data => fns.reduceRight((result,fn)=> fn(result),data);
-const curry = fn => (...args) => args.length>1?fn.bind(this,...args.slice(-args.length)):fn.bind(this,args[0]);
+const curry = fn => (...args) => args.length >= fn.length ? fn.call(null,...args) : curry(fn.bind(null,...args))
 const map = (predicate,data)=>data.map(predicate);
 const filter = (predicate,data)=>data.filter(predicate);
 const reduce = (predicate,init,data)=>data.reduce(predicate,init);
