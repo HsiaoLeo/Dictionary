@@ -1,5 +1,6 @@
 :root{
-    --theme-color:darkblue;
+    --theme-color:#00008b;
+    --theme-color-halstrans:#00008b50;
 }
 
 div.wordCard{
@@ -55,11 +56,53 @@ div.wordCard div.square.anti:before{
 div.wordCard div.adj:before{
     content:"形";
 }
+div.wordCard div.n:before{
+    content:"名";
+}
+div.wordCard div.v:before{
+    content:"動";
+}
+div.wordCard div.adv:before{
+    content:"副";
+}
+div.wordCard div.prep:before{
+    content:"介";
+}
+div.wordCard div.pron:before{
+    content:"代";
+}
+div.wordCard div.conj:before{
+    content:"連";
+}
+div.wordCard div.art:before{
+    content:"冠";
+}
+div.wordCard div.int:before{
+    content:"感";
+}
+div.wordCard div.aux:before{
+    content:"助";
+}
 div.wordCard div.similar:before{
     content:"同";
 }
 div.wordCard div.reverse:before{
     content:"反";
+}
+
+div.wordCard span.volume{
+    width:40px;
+    height:40px;
+    display: inline-block;
+    background-image: url("../img/volume-high-solid.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 25px;
+    border-radius: 20px;
+}
+div.wordCard span.volume:hover{
+    background-color: var(--theme-color-halstrans);
+    cursor: pointer;
 }
 
 

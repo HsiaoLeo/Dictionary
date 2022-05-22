@@ -1,11 +1,43 @@
+//querySelector addEventListener 簡化
+function $$(css){
+    return new Elem(css);
+}
+class Elem{
+    #nodes =[]
+    constructor(css){
+        try{
+            this.#nodes = Array.from(document.querySelectorAll(css));
+        }
+        catch(e){
+            this.#nodes = [];
+        }
+    }
+    get element(){
+        switch(this.#nodes.length){
+            case 0:
+                return null;
+            case 1:
+                return this.#nodes[0]
+            default:
+                return this.#nodes;
+        }
+    }
+    on(event,func,triggerState = false){
+        this.#nodes.forEach(function(elem){
+            elem.addEventListener(event,func,triggerState);
+        })
+        return this;
+    }
+}
+
 class Words{
-    word
-    word_cn //array
-    sentance
-    sentance_cn
-    similar_word //array
-    reverse_word //array
-    part_of_speech
+    word =""
+    word_cn =[] //array
+    sentance =""
+    sentance_cn=""
+    similar_word=[] //array
+    reverse_word=[] //array
+    part_of_speech=""
 	#isSub
 	static #wordCount = 0
 	static get wordCount(){
@@ -17,13 +49,22 @@ class Words{
     get isSubWord(){
         return this.#isSub;
     }
-    constructor({w,wc,s,sc,sw,pos},issub=false){
+    get wordCN(){
+        return this.word_cn.join(';');
+    }
+    get wordSimilar(){
+        return this.similar_word.join(';');
+    }
+    get wordReverse(){
+        return this.reverse_word.join(';');
+    }
+    constructor({w,wc,s,sc,sw,rw,pos},issub=false){
         this.word=w.toLowerCase();
-        this.word_cn=wc;
+        this.word_cn=wc.split(';');
         this.sentance=s;
         this.sentance_cn=sc;
-        this.similar_word=sw;
-        this.reverse_word=sw;
+        this.similar_word=sw.split(';');
+        this.reverse_word=rw.split(';');
         this.part_of_speech=pos;
 		this.#isSub = issub;
 		if(!Words.#wordCount){
