@@ -39,6 +39,7 @@ class Words{
     reverse_word=[] //array
     part_of_speech=""
 	#isSub
+    #delimeter=';'
 	static #wordCount = 0
 	static get wordCount(){
 		return Words.#wordCount.valueOf();
@@ -50,21 +51,21 @@ class Words{
         return this.#isSub;
     }
     get wordCN(){
-        return this.word_cn.join(';');
+        return this.word_cn.join(this.#delimeter);
     }
     get wordSimilar(){
-        return this.similar_word.join(';');
+        return this.similar_word.join(this.#delimeter);
     }
     get wordReverse(){
-        return this.reverse_word.join(';');
+        return this.reverse_word.join(this.#delimeter);
     }
     constructor({w,wc,s,sc,sw,rw,pos},issub=false){
         this.word=w.toLowerCase();
-        this.word_cn=wc.split(';');
+        this.word_cn=wc.split(this.#delimeter);
         this.sentance=s;
         this.sentance_cn=sc;
-        this.similar_word=sw.split(';');
-        this.reverse_word=rw.split(';');
+        this.similar_word=sw.split(this.#delimeter);
+        this.reverse_word=rw.split(this.#delimeter);
         this.part_of_speech=pos;
 		this.#isSub = issub;
 		if(!Words.#wordCount){
