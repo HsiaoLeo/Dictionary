@@ -105,5 +105,29 @@ div.wordCard span.volume:hover{
     cursor: pointer;
 }
 
+div.searchField{
+	padding:5px 15px;
+}
+div.searchField div.searchBox{
+	border:1px solid;
+	height:50px;
+	width:80%;
+	margin:0 auto;
+	border-radius:25px;
+}
+div.searchField div.searchBox:focus-within,div.searchField div.searchBox:hover{
+	box-shadow: 1px 1px 1px 1px;
+}
+div.searchField div.searchBox input[type='search']{
+	display:inline-box;
+	border:none;
+	width:calc(100% - 50px);
+	margin:5px 25px;
+	font-size:30px;
+}
+div.searchField div.searchBox input[type='search']:focus{
+	outline:none;
+}
+
 
 
