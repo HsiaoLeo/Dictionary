@@ -60,7 +60,7 @@ function csvtoWorksArray(){
 function cardGenerator(wordNode,target){
     let wordCard=document.createElement("div");
     let mainWord=wordNode.data;
-    let sentanceSpliter = new RegExp(`\b${mainWord.word}\b`,"i");
+    let sentanceSpliter = new RegExp(`\b${mainWord.word}(?:ed|d)*\b`,"i");
     wordCard.innerHTML = `
         <div class="wordBody">
             <div class="wordMain"><span>${mainWord.word}</span><span class="volume" data-word="${mainWord.word}" onclick="speak(this.dataset.word)"></span></div>
